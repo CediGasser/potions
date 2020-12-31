@@ -1,0 +1,56 @@
+[
+    {
+        "name":"Potion of Strength",
+        "description":"Increases player's melee attack damage.",
+        "image":"data/images/Potion_of_Strength.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Healing",
+        "description":"Restores health.",
+        "image":"data/images/Potion_of_Healing.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Invisibility",
+        "description":"Renders the player invisible. Equipped and wielded items are still visible.",
+        "image":"data/images/Potion_of_Invisibility.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Slow Falling",
+        "description":"Causes the player to fall at a slower rate and not take any damage when hitting the ground.",
+        "image":"data/images/Potion_of_Slow_Falling.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Night Vision",
+        "description":"Makes everything appear to be at the maximum light level,",
+        "image":"data/images/Potion_of_Night_Vision.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Leaping",
+        "description":"Increases jump height.",
+        "image":"data/images/Potion_of_Leaping.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Fire Resistance",
+        "description":"Gives immunity to damage from fire, lava, magma blocks, campfires, and blazes' ranged attacks.",
+        "image":"data/images/Potion_of_Fire_Resistance.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Slowness",
+        "description":"Slows the player to 85% speed.",
+        "image":"data/images/Potion_of_Slowness.gif",
+        "price":10
+    },
+    {
+        "name":"Potion of Poison",
+        "description":"Depletes health by 1♥ every 1.25 seconds.",
+        "image":"data/images/Potion_of_Poison.gif",
+        "price":10
+    }
+]
