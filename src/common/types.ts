@@ -2,5 +2,6 @@ export type Potion = {
     name: string,
     description: string,
     image: string,
-    price: number
+    price: number,
+    id: number
 }

@@ -7,78 +7,31 @@ const session = new Session({ framework: "oak" });
 await session.init();
 export const usableSession = session.use()(session);
 
-const potions: Potion[] = [
-    {
-        "name":"Potion of Strength",
-        "description":"Increases player's melee attack damage.",
-        "image":"data/images/Potion_of_Strength.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Healing",
-        "description":"Restores health.",
-        "image":"data/images/Potion_of_Healing.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Invisibility",
-        "description":"Renders the player invisible. Equipped and wielded items are still visible.",
-        "image":"data/images/Potion_of_Invisibility.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Slow Falling",
-        "description":"Causes the player to fall at a slower rate and not take any damage when hitting the ground.",
-        "image":"data/images/Potion_of_Slow_Falling.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Night Vision",
-        "description":"Makes everything appear to be at the maximum light level,",
-        "image":"data/images/Potion_of_Night_Vision.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Leaping",
-        "description":"Increases jump height.",
-        "image":"data/images/Potion_of_Leaping.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Fire Resistance",
-        "description":"Gives immunity to damage from fire, lava, magma blocks, campfires, and blazes' ranged attacks.",
-        "image":"data/images/Potion_of_Fire_Resistance.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Slowness",
-        "description":"Slows the player to 85% speed.",
-        "image":"data/images/Potion_of_Slowness.gif",
-        "price":10
-    },
-    {
-        "name":"Potion of Poison",
-        "description":"Depletes health by 1♥ every 1.25 seconds.",
-        "image":"data/images/Potion_of_Poison.gif",
-        "price":10
-    }
-];
+async function loadPotions(): Promise<Potion[]> {
+    const jsonFile = await Deno.readTextFile(`${Deno.cwd()}/src/backend/data/potions.json`);
+    return JSON.parse(jsonFile);
+}
 
-console.log(potions);
+const potions: Potion[] = await loadPotions();
 
 const router = new Router();
 router
-    .get("api/potions", context => {
-        context.response.body = potions
+    .get("/api/potions", async context => {
+        context.response.body = potions;
     })
-    .get("api/potions/:name", context => {
-        const index = potions.findIndex(p => p.name == context.params.id);
+    .get("/api/potions/:id", async context => {
+        const index = potions.findIndex(p => p.id.toString() == context.params.id);
         if (index >= 0){
-            context.response.body = potions[index]
+            context.response.body = potions[index];
         } else {
-            context.response.status = 404
-            context.response.body = `ID ${context.params.id} not found`
+            context.response.status = 404;
+            context.response.body = `Potion with ID: ${context.params.id} not found`;
         }
+    })
+    .get("/api/images/:image", async context => {
+        const image = await Deno.readFile(`${Deno.cwd()}/src/backend/data/images/${context.params.image}`);
+        context.response.body = image;
+        context.response.headers.set('Content-Type', 'image/png');
     });
 
-export const api = router.routes();
+export const apiRouter = router;
