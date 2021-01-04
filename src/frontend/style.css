@@ -18,9 +18,38 @@ body {
 }
 
 .potionCard {
-  width: 250px;
+  min-width: 240px;
+  height: 240px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  position: relative;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+#potionOverview {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.potionCardImg {
+  width: 100%;
+  height: 100%;
+  filter: none;
+}
+
+.potionCard a {
+  position: absolute;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+}
+
+.potionCardTextDiv {
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
 }
 
 .button {
