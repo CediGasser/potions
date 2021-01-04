@@ -3,63 +3,63 @@
         "name":"Potion of Strength",
         "description":"Increases player's melee attack damage.",
         "image":"api/images/Potion_of_Strength.gif",
-        "price":10,
+        "price":4,
         "id":1
     },
     {
         "name":"Potion of Healing",
         "description":"Restores health.",
         "image":"api/images/Potion_of_Healing.gif",
-        "price":10,
+        "price":3,
         "id":2
     },
     {
         "name":"Potion of Invisibility",
         "description":"Renders the player invisible. Equipped and wielded items are still visible.",
         "image":"api/images/Potion_of_Invisibility.gif",
-        "price":10,
+        "price":6,
         "id":3
     },
     {
         "name":"Potion of Slow Falling",
         "description":"Causes the player to fall at a slower rate and not take any damage when hitting the ground.",
         "image":"api/images/Potion_of_Slow_Falling.gif",
-        "price":10,
+        "price":1,
         "id":4
     },
     {
         "name":"Potion of Night Vision",
         "description":"Makes everything appear to be at the maximum light level,",
         "image":"api/images/Potion_of_Night_Vision.gif",
-        "price":10,
+        "price":5,
         "id":5
     },
     {
         "name":"Potion of Leaping",
         "description":"Increases jump height.",
         "image":"api/images/Potion_of_Leaping.gif",
-        "price":10,
+        "price":4,
         "id":6
     },
     {
         "name":"Potion of Fire Resistance",
         "description":"Gives immunity to damage from fire, lava, magma blocks, campfires, and blazes' ranged attacks.",
         "image":"api/images/Potion_of_Fire_Resistance.gif",
-        "price":10,
+        "price":1,
         "id":7
     },
     {
         "name":"Potion of Slowness",
         "description":"Slows the player to 85% speed.",
         "image":"api/images/Potion_of_Slowness.gif",
-        "price":10,
+        "price":3,
         "id":8
     },
     {
         "name":"Potion of Poison",
         "description":"Depletes health by 1♥ every 1.25 seconds.",
         "image":"api/images/Potion_of_Poison.gif",
-        "price":10,
+        "price":6,
         "id":9
     }
 ]
