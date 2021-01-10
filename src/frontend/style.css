@@ -12,7 +12,7 @@
 }
 
 html {
-  background-color: #f08080;
+  background-color: #121212;
 }
 
 body {
@@ -21,6 +21,11 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 40px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+nav {
+  height: 50px;
 }
 
 .potionCard {
@@ -31,6 +36,7 @@ body {
   position: relative;
   border-radius: 10px;
   margin: 20px;
+  background-color: rgba(255, 255, 255, 0.07);
 }
 
 #potionOverview {
@@ -39,7 +45,7 @@ body {
 }
 
 .potionCardImg {
-  height: 90%;
+  height: 80%;
   image-rendering: pixelated;
 }
 
@@ -56,6 +62,7 @@ body {
   box-shadow: 0 24px 36px rgba(0,0,0,0.11), 0 24px 46px rgba(0, 0, 0, 0.2);
 }
 
+
 .potionCardTextDiv {
   padding: 10px;
   position: absolute;
@@ -63,16 +70,19 @@ body {
   width: 100%;
 }
 
-.potionCardTextDiv p {
+.potionCardTextDiv p, #cartTotal {
   text-align: center;
   font-family: "minecraftia", "Roboto", sans-serif;
 }
 
+.potionCardTextDiv p {
+  color: lightgray;
+}
+
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #b497fd;
   border: none;
   border-radius: 10px;
-  color: white;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
@@ -82,11 +92,46 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#cartTotal {
+#cartA {
   float: right;
+  width: 120px;
+  display: grid;
+  grid-template-columns: 30px auto 30px;
+  grid-template-rows: auto;
+  grid-template-areas: "cartimg amount emeraldimg";
+}
+
+#detailDiv p, #detailDiv h3 {
+  color: lightgray;
+}
+
+#potionImage {
+  width: 400px;
+  image-rendering: pixelated;
+}
+
+#cardDiv {
+  display: grid;
+  grid-template-columns: 20px 20px 20px;
+}
+
+#cartA.p {
+  position: relative;
+  top: 5px;
+  grid-area: amount;
+  color: black;
 }
 
 #cartImg {
   height: 100%;
+  margin-right: 20px;
+  float: left;
+  grid-area: cartimg;
+}
+
+#emerald {
+  height: 100%;
   margin-right: 5px;
+  float: right;
+  grid-area: emeraldimg;
 }

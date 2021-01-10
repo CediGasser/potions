@@ -5,3 +5,13 @@ export type Potion = {
     price: number,
     id: number
 }
+
+export type CartItem = {
+    id: number,
+    amount: number
+}
+
+export type Cart = {
+    totalPrice: number,
+    items: CartItem[]
+}

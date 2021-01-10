@@ -1,9 +1,11 @@
 <main id="content">
-    <h3 id="potionName"></h3>
-    <img id="potionImage"></img>
-    <p id="potionDescription"></p>
-    <p id="potionPrice"></p>
-    
+    <div id="detailDiv">
+        <h3 id="potionName"></h3>
+        <img id="potionImage"></img>
+        <p id="potionDescription"></p>
+        <p id="potionPrice"></p>
+        <a class="button">Add to cart</a>
+    </div>
     <script type="module">
         import { loadDetail } from "./build.app.js";
         loadDetail();
