@@ -1,3 +1,14 @@
 <main id="content">
-    <h1>This is the Cart page</h1>
+    <table id="cartTable">
+        <tr>
+            <th>Item</th>
+            <th>Unit price</th>
+            <th>Amount</th>
+            <th>Total</th>
+        </tr>
+    </table>
+    <script type="module">
+        import { loadCart } from "./build.app.js";
+        loadCart();
+    </script>
 </main>

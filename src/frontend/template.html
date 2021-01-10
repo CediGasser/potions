@@ -13,8 +13,11 @@
                 <a class="button" id="cartA" href="cart.html">
                     <img id="cartImg" src="cart.png">
                     <p id="cartTotal">69</p>
-                    <img id="emerald" src="emerald.png">
                 </a>
+                <script type="module">
+                    import { loadCartTotal } from "./build.app.js";
+                    loadCartTotal();
+                </script>
             </div>
         </nav>
         <div>

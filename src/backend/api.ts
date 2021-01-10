@@ -19,6 +19,7 @@ async function getTotal(cart: Cart): Promise<number> {
         const price = potions[index].price;
         total += price * item.amount;
     });
+    total = +total.toFixed(2);
     return total;
 }
 

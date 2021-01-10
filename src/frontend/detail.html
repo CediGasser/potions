@@ -4,10 +4,12 @@
         <img id="potionImage"></img>
         <p id="potionDescription"></p>
         <p id="potionPrice"></p>
-        <a class="button">Add to cart</a>
+        <p id="potionOldPrice"></p>
+        <button class="button" id="buttonAddToCart">Add to cart</button>
     </div>
     <script type="module">
-        import { loadDetail } from "./build.app.js";
+        import { loadDetail, addToCart } from "./build.app.js";
         loadDetail();
+        document.getElementById("buttonAddToCart").addEventListener("click", () => addToCart());
     </script>
 </main>

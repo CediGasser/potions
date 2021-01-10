@@ -26,6 +26,12 @@ body {
 
 nav {
   height: 50px;
+  margin: 20px;
+}
+
+#potionOverview {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .potionCard {
@@ -37,11 +43,6 @@ nav {
   border-radius: 10px;
   margin: 20px;
   background-color: rgba(255, 255, 255, 0.07);
-}
-
-#potionOverview {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .potionCardImg {
@@ -57,11 +58,15 @@ nav {
   left:0px;
 }
 
-.potionCard:hover, .button:hover {
+.potionCard:hover {
   transform: translateY(-5px) scale(1.005) translateZ(0);
   box-shadow: 0 24px 36px rgba(0,0,0,0.11), 0 24px 46px rgba(0, 0, 0, 0.2);
 }
 
+.button:hover {
+  transform: translateY(-1px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11), 0 24px 46px rgba(0, 0, 0, 0.2);
+}
 
 .potionCardTextDiv {
   padding: 10px;
@@ -92,17 +97,45 @@ nav {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#cartA {
-  float: right;
-  width: 120px;
-  display: grid;
-  grid-template-columns: 30px auto 30px;
-  grid-template-rows: auto;
-  grid-template-areas: "cartimg amount emeraldimg";
+#buttonAddToCart {
+  height: 40px;
+}
+
+#cartTable {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  color: lightgray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-collapse: collapse;
+}
+
+#cartTable tr td button, #cartTable tr td p {
+  float:left; 
+  display:inline;
+  width: 20%;
+  text-align: center;
+  padding-top: 0px;
+}
+
+#cartTable tr {
+  height: 40px;
+  border-bottom: 1px solid black;
+  border-radius: 10px;
+}
+
+#lastCartRow {
+  border-bottom: none;
+  text-decoration: underline;
 }
 
 #detailDiv p, #detailDiv h3 {
   color: lightgray;
+}
+
+#potionOldPrice {
+  text-decoration: line-through;
+  color: red;
 }
 
 #potionImage {
@@ -110,9 +143,13 @@ nav {
   image-rendering: pixelated;
 }
 
-#cardDiv {
+#cartA {
+  float: right;
+  width: 160px;
   display: grid;
-  grid-template-columns: 20px 20px 20px;
+  grid-template-columns: 20px auto;
+  grid-template-rows: auto;
+  grid-template-areas: "cartimg amount";
 }
 
 #cartA.p {
@@ -127,11 +164,4 @@ nav {
   margin-right: 20px;
   float: left;
   grid-area: cartimg;
-}
-
-#emerald {
-  height: 100%;
-  margin-right: 5px;
-  float: right;
-  grid-area: emeraldimg;
 }
