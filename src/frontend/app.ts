@@ -33,14 +33,20 @@ export async function loadCart() {
     </tr>
     </thead>`
 
-    cartItems.forEach(async cartItem => {
-        const resp = await fetch(`/api/potions/${cartItem.id}`);
-        const item: Potion = await resp.json();
+    cartItems.forEach(async function (cartItem) {
+            const resp = await fetch(`/api/potions/${cartItem.id}`);
+            const item: Potion = await resp.json();
 
-        const tr: Node = createCartRow(cartItem, item);
-        table.appendChild(tr);
-    });
+            const tr: Node = createCartRow(cartItem, item);
+            table.appendChild(tr);
+        });
     table.innerHTML += `<tfoot><tr id="lastCartRow"><td>Total</td><td></td><td></td><td>CHF ${cart.totalPrice}</td></tr><tfoot>`
+}
+
+export async function deleteCart() {
+    await fetch("/api/cart", {
+        method: "delete"
+    });
 }
 
 function createCartRow(cartItem: CartItem, potion: Potion): Node {
@@ -96,3 +102,4 @@ async function minusItemInCart(event: any) {
     loadCart();
     loadCartTotal();
 }
+

@@ -6,8 +6,6 @@ export async function loadPotions() {
     const response = await fetch("/api/potions");
     const potions: Potion[] = await response.json();
     
-    console.log(potions);
-
     const overviewDiv = document.getElementById("potionOverview");
     potions.forEach(potion => {
         overviewDiv.appendChild(createPotionCard(potion));

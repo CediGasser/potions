@@ -4,6 +4,7 @@
         "description":"Inflicts 6♥♥♥ of damage.",
         "image":"api/images/Potion_of_Harming.gif",
         "price":7.55,
+        "oldPrice":8.55,
         "id":0
     },
     {
@@ -11,6 +12,7 @@
         "description":"Increases player's melee attack damage.",
         "image":"api/images/Potion_of_Strength.gif",
         "price":4.55,
+        "oldPrice":4.95,
         "id":1
     },
     {
@@ -32,6 +34,7 @@
         "description":"Causes the player to fall at a slower rate and not take any damage when hitting the ground.",
         "image":"api/images/Potion_of_Slow_Falling.gif",
         "price":1.00,
+        "oldPrice":1.50,
         "id":4
     },
     {
@@ -46,6 +49,7 @@
         "description":"Increases jump height.",
         "image":"api/images/Potion_of_Leaping.gif",
         "price":4.30,
+        "oldPrice":5.00,
         "id":6
     },
     {
@@ -60,6 +64,7 @@
         "description":"Slows the player to 85% speed.",
         "image":"api/images/Potion_of_Slowness.gif",
         "price":3.60,
+        "oldPrice":6.30,
         "id":8
     },
     {
@@ -67,6 +72,7 @@
         "description":"Depletes health by 1♥ every 1.25 seconds.",
         "image":"api/images/Potion_of_Poison.gif",
         "price":6.80,
+        "oldPrice":8.90,
         "id":9
     }
 ]

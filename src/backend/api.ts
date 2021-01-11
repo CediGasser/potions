@@ -101,6 +101,8 @@ router
         }
     })
     .delete("/api/cart", async context => {
+        //validation
+        
         context.state.session.set("cart", {
             totalPrice: 0,
             items: []
