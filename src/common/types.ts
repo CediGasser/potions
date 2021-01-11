@@ -3,7 +3,7 @@ export type Potion = {
     description: string,
     image: string,
     price: number,
-    olcPrice: number,
+    oldPrice: number,
     id: number
 }
 

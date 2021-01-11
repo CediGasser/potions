@@ -40,7 +40,7 @@ export async function loadCart() {
             const tr: Node = createCartRow(cartItem, item);
             table.appendChild(tr);
         });
-    table.innerHTML += `<tfoot><tr id="lastCartRow"><td>Total</td><td></td><td></td><td>CHF ${cart.totalPrice}</td></tr><tfoot>`
+    table.innerHTML += `<tfoot><tr id="lastCartRow"><td>Total</td><td></td><td></td><td>CHF ${cart.totalPrice.toFixed(2)}</td></tr><tfoot>`
 }
 
 export async function deleteCart() {
@@ -57,7 +57,7 @@ function createCartRow(cartItem: CartItem, potion: Potion): Node {
     tdName.innerText = potion.name;
 
     const tdUnitPrice = document.createElement("td");
-    tdUnitPrice.innerText = "CHF " + potion.price.toString();
+    tdUnitPrice.innerText = "CHF " + potion.price.toFixed(2);
 
     const tdAmount = document.createElement("td");
     const btnMinus = document.createElement("button");

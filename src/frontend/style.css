@@ -73,15 +73,30 @@ nav {
   position: absolute;
   bottom: 0;
   width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-template-areas: "oldprice price" "name name";
 }
 
-.potionCardTextDiv p, #cartTotal {
+.potionCardName {
   text-align: center;
   font-family: "minecraftia", "Roboto", sans-serif;
+  grid-area: name;
+  color: lightgray;
 }
 
-.potionCardTextDiv p {
+.potionCardPrice {
+  font-family: "Roboto", sans-serif;
   color: lightgray;
+  grid-area: price;
+}
+
+.potionCardOldPrice {
+  text-decoration: line-through;
+  color: red;
+  font-family: "Roboto", sans-serif;
+  grid-area: oldprice;
 }
 
 .button {
@@ -167,20 +182,26 @@ label {
   grid-template-areas: "cartimg amount";
 }
 
-#cartA.p {
+#cartTotal {
   position: relative;
   top: 5px;
   grid-area: amount;
-  color: black;
+  color: #121212;
+  text-align: center;
+  font-family: "minecraftia", "Roboto", sans-serif;
 }
 
-#cartImg, #homeImg {
+#cartImg {
   height: 100%;
   margin-right: 20px;
   float: left;
   grid-area: cartimg;
+  min-width: 20px;
 }
 
 #homeImg {
   margin: auto;
+  height: 100%;
+  float: left;
+  grid-area: cartimg;
 }
