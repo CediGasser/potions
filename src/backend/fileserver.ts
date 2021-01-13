@@ -8,7 +8,7 @@ export const fileserver = async (context: Context<Record<string, any>>) => {
         context.request.url.pathname = "/index.html";
     }
     if(context.request.url.pathname.endsWith(".html")){
-        const template = await Deno.readTextFile(`${Deno.cwd()}${frontendPath}/template.html`);
+        const template = await Deno.readTextFile(`${Deno.cwd()}${frontendPath}/resource/template.html`);
         const page = await Deno.readTextFile(`${Deno.cwd()}${frontendPath}${context.request.url.pathname}`);
 
         context.response.body = template.replace("<!-- Here goes the content -->", page);

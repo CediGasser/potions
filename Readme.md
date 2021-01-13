@@ -39,11 +39,22 @@ Eine Herausforderung war, das HTML zu Modularisieren. Es soll nicht immer wieder
 
 ## Typen ##
 ```js
-type Potion = {
+export type Potion = {
     name: string,
     description: string,
     image: string,
     price: number,
+    oldPrice: number,
     id: number
+}
+
+export type CartItem = {
+    id: number,
+    amount: number
+}
+
+export type Cart = {
+    totalPrice: number,
+    items: CartItem[]
 }
 ```

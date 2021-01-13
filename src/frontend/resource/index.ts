@@ -1,6 +1,6 @@
 /// <reference lib="dom" />
 
-import { Potion } from "../common/types.ts";
+import { Potion } from "../../common/types.ts";
 
 export async function loadPotions() {
     const response = await fetch("/api/potions");

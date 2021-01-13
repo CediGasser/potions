@@ -23,6 +23,20 @@ async function getTotal(cart: Cart): Promise<number> {
     return total;
 }
 
+function isFormDataValid(data: {"firstname":string, "lastname":string, "email":string}): boolean {
+    if (data.firstname == "" || data.firstname == null || data.firstname == undefined) {
+        return false;
+    } else if (data.lastname == "" || data.lastname == null || data.lastname == undefined) {
+        return false;
+    } else if (data.email == "" || data.email == null || data.email == undefined) {
+        const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
+        if (!re.test(data.email)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 const potions: Potion[] = await loadPotions();
 
 const router = new Router();
@@ -101,14 +115,19 @@ router
         }
     })
     .delete("/api/cart", async context => {
-        //validation
-        
-        context.state.session.set("cart", {
-            totalPrice: 0,
-            items: []
-        });
-        context.response.status = 200;
-        context.response.body = context.state.session.get("cart");
+        const requestBody = await context.request.body({ type:"json" }).value;
+        console.log(requestBody)
+        if (isFormDataValid(requestBody)) {
+            context.state.session.set("cart", {
+                totalPrice: 0,
+                items: []
+            });
+            context.response.status = 200;
+            context.response.body = context.state.session.get("cart");
+        } else {
+            context.response.status = 400;
+            context.response.body = "Validierung backendseitig fehlgeschlagen.";
+        }
     });
 
 export const apiRouter = router;
