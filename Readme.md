@@ -29,10 +29,22 @@ Nachdem die Applikation gestart wurde, können Sie diese unter `http://localhost
 `/api/potions` returns the list of all Potions from `potions.json`
 
 `GET`
-`/api/potions/:id` returns one Potion with according id. Example: `/api/potions/3`
+`/api/potions/:id` returns one Potion from `potions.json` with according id. Example request: `/api/potions/3`
 
 `GET`
-`/api/images/:name` returns image of a Potion: `/api/images/Potion_of_Slow_Falling.gif`
+`/api/images/:name` returns image of a Potion. Example request: `/api/images/Potion_of_Slow_Falling.gif`
+
+`GET`
+`/api/cart` return cart from session.
+
+`POST`
+`/api/cart/:id` adds a Potion to the cart. Example request: `/api/cart/3` adds the potion with id `3` to the cart.
+
+`DELETE`
+`/api/cart/:id` removes a Potion from the cart. Example request: `/api/cart/3` removes the Potion with id `3` from the cart.
+
+`DELETE`
+`/api/cart` clears cart if the data provided is valid. Example request body: `{"firstname": "Max", "lastname": "Muster", "email": "max.muster@example.com" }`
 
 ## Templating ##
 Eine Herausforderung war, das HTML zu Modularisieren. Es soll nicht immer wieder das Selbe HTML-Grundgerüst gebaut werden, das wäre ja dann redundant. Für das erhielten wir lediglich das Stichwort "Templating". Da ich nicht eine grobe Template-Engine einbauen wollte, habe ich selbst etwas kleines in `fileserver.ts` entwickelt.
