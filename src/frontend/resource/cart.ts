@@ -18,13 +18,13 @@ export async function loadCart() {
         <th>Total</th>
     </tr>
     </thead>`
-    cartItems.forEach(async function (cartItem) {
-            const resp = await fetch(`/api/potions/${cartItem.id}`);
-            const item: Potion = await resp.json();
+    cartItems.forEach(async (cartItem) => {
+        const resp = await fetch(`/api/potions/${cartItem.id}`);
+        const item: Potion = await resp.json();
 
-            const tr: Node = createCartRow(cartItem, item);
-            table.appendChild(tr);
-        });
+        const tr: Node = createCartRow(cartItem, item);
+        table.appendChild(tr);
+    });
     table.innerHTML += `<tfoot><tr id="lastCartRow"><td>Total</td><td></td><td></td><td>CHF ${cart.totalPrice.toFixed(2)}</td></tr><tfoot>`
 }
 
@@ -69,8 +69,8 @@ async function plusItemInCart(event: any) {
     await fetch(`/api/cart/${id}`, { 
         method: "post" 
     });
-    loadCart();
-    loadCartTotal();
+    await loadCart();
+    await loadCartTotal();
 }
 
 async function minusItemInCart(event: any) {
@@ -78,6 +78,6 @@ async function minusItemInCart(event: any) {
     await fetch(`/api/cart/${id}`, { 
         method: "delete" 
     });
-    loadCart();
-    loadCartTotal();
+    await loadCart();
+    await loadCartTotal();
 }

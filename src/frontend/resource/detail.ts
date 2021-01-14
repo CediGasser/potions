@@ -8,8 +8,6 @@ export async function loadDetail() {
     const response = await fetch(`/api/potions/${id}`);
     const potion: Potion = await response.json();
 
-    console.log(potion);
-
     document.getElementById("potionName").textContent = potion.name;
     document.getElementById("potionImage").setAttribute("src", potion.image);
     document.getElementById("potionDescription").textContent = potion.description;
@@ -24,5 +22,5 @@ export async function addToCart() {
     await fetch(`/api/cart/${id}`, {
         method: "post"
     });
-    loadCartTotal();
+    await loadCartTotal();
 }

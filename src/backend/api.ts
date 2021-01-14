@@ -116,7 +116,7 @@ router
     })
     .delete("/api/cart", async context => {
         const requestBody = await context.request.body({ type:"json" }).value;
-        console.log(requestBody)
+        
         if (isFormDataValid(requestBody)) {
             context.state.session.set("cart", {
                 totalPrice: 0,

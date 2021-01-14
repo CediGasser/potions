@@ -10,6 +10,6 @@
     <script type="module">
         import { loadDetail, addToCart } from "./build.app.js";
         loadDetail();
-        document.getElementById("buttonAddToCart").addEventListener("click", () => addToCart());
+        document.getElementById("buttonAddToCart").addEventListener("click", async () => await addToCart());
     </script>
 </main>
