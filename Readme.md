@@ -50,6 +50,7 @@ Nachdem die Applikation gestart wurde, können Sie diese unter `http://localhost
 Eine Herausforderung war, das HTML zu Modularisieren. Es soll nicht immer wieder das Selbe HTML-Grundgerüst gebaut werden, das wäre ja dann redundant. Für das erhielten wir lediglich das Stichwort "Templating". Da ich nicht eine grobe Template-Engine einbauen wollte, habe ich selbst etwas kleines in `fileserver.ts` entwickelt.
 
 ## Typen ##
+Diese Typen in `common/types.ts` werden vom front- und backend importiert.
 ```js
 export type Potion = {
     name: string,
