@@ -29,6 +29,12 @@ nav {
   margin: 20px;
 }
 
+#logo {
+  max-width: 400px;
+  margin: auto;
+  width: 100%;
+}
+
 #potionOverview {
   display: flex;
   flex-wrap: wrap;
@@ -156,7 +162,7 @@ nav {
 }
 
 #checkoutForm {
-  width: 400px;
+  max-width: 400px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
@@ -174,6 +180,7 @@ nav {
   width: 80%;
   margin: 20px;
   height: 30px;
+  color: lightgray;
 }
 
 .input:hover, .input:focus {
@@ -235,3 +242,4 @@ label {
   float: left;
   grid-area: cartimg;
 }
+
