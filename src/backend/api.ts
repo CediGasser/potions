@@ -1,6 +1,7 @@
 import { Router } from "https://deno.land/x/oak@v6.4.0/mod.ts";
 import { Session } from "https://deno.land/x/session@1.1.0/mod.ts";
 import { Potion, Cart, CartItem } from "../common/types.ts";
+import { validate, required, isEmail, firstMessages, FirstMessages } from "https://deno.land/x/validasaur@v0.15.0/mod.ts";
 
 // Session konfigurieren und starten
 const session = new Session({ framework: "oak" });
@@ -23,18 +24,20 @@ async function getTotal(cart: Cart): Promise<number> {
     return total;
 }
 
-function isFormDataValid(data: {"firstname":string, "lastname":string, "email":string}): boolean {
-    if (data.firstname == "" || data.firstname == null || data.firstname == undefined) {
-        return false;
-    } else if (data.lastname == "" || data.lastname == null || data.lastname == undefined) {
-        return false;
-    } else if (data.email == "" || data.email == null || data.email == undefined) {
-        const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
-        if (!re.test(data.email)) {
-            return false;
-        }
-    }
-    return true;
+async function isFormDataValid(data: {"firstname":string, "lastname":string, "email":string}): Promise<[boolean, FirstMessages]> {
+    data.firstname = data.firstname.trim();
+    data.lastname = data.lastname.trim();
+    data.email = data.email.trim();
+
+    const [ valid, errors ] = await validate(data, {
+        firstname: required,
+        lastname: required,
+        email: [required, isEmail]
+    });
+
+    const errorMessages = firstMessages(errors);
+
+    return [valid, errorMessages]
 }
 
 const potions: Potion[] = await loadPotions();
@@ -116,8 +119,17 @@ router
     })
     .delete("/api/cart", async context => {
         const requestBody = await context.request.body({ type:"json" }).value;
-        
-        if (isFormDataValid(requestBody)) {
+        const cart: Cart = await context.state.session.get("cart");
+
+        console.log(cart)
+        console.log(requestBody)
+
+        const [valid, errors] = await isFormDataValid(requestBody);
+
+        if (cart.totalPrice == 0) {
+            context.response.status = 400;
+            context.response.body = "Dein Warenkorb ist leer";
+        } else if (valid) {
             context.state.session.set("cart", {
                 totalPrice: 0,
                 items: []
@@ -126,7 +138,18 @@ router
             context.response.body = context.state.session.get("cart");
         } else {
             context.response.status = 400;
-            context.response.body = "Validierung backendseitig fehlgeschlagen.";
+
+            let errorMessage = "";
+            for (let msg in errors) {
+                if (errorMessage != "") {
+                    errorMessage += " and " + errors[msg];
+                } else {
+                    errorMessage = "" + errors[msg];
+                }
+                
+            }
+
+            context.response.body = errorMessage;
         }
     });
 

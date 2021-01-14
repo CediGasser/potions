@@ -17,7 +17,7 @@ export async function deleteCart() {
 
     if (response.status == 200) {
         location.href = "/index.html";
-        alert("Bestellung abgesendet.")
+        alert("Bestellung abgesendet.");
     } else {
         alert(await response.text());
     }
