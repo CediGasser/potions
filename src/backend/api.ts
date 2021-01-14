@@ -121,9 +121,6 @@ router
         const requestBody = await context.request.body({ type:"json" }).value;
         const cart: Cart = await context.state.session.get("cart");
 
-        console.log(cart)
-        console.log(requestBody)
-
         const [valid, errors] = await isFormDataValid(requestBody);
 
         if (cart.totalPrice == 0) {
