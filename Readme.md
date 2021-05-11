@@ -26,7 +26,7 @@ Nachdem die Applikation gestart wurde, können Sie diese unter `http://localhost
 
 ## API Dokumentation ##
 `GET`
-`/api/potions` returns the list of all Potions from `potions.json`
+`/api/potions` returns the list of all Potions from `potions.json` (Thanks to Jöni for providing Potions)
 
 `GET`
 `/api/potions/:id` returns one Potion from `potions.json` with according id. Example request: `/api/potions/3`
