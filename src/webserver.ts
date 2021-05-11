@@ -8,5 +8,7 @@ app.use(usableSession);
 app.use(apiRouter.routes());
 app.use(fileserver);
 
-console.log("Server running on http://localhost:8000");
-app.listen({ port: 8000 });
+const port = 80
+
+console.log(`Server running on http://localhost:${port}`);
+app.listen({ port: port });
