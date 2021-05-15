@@ -8,7 +8,7 @@ app.use(usableSession);
 app.use(apiRouter.routes());
 app.use(fileserver);
 
-const port = 80
+const port = 443
 
 console.log(`Server running on http://localhost:${port}`);
 app.listen({ port: port });
