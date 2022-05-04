@@ -1,4 +1,4 @@
-import { send, Context } from "https://deno.land/x/oak@v6.4.0/mod.ts";
+import { send, Context } from "https://deno.land/x/oak@v10.5.1/mod.ts";
 
 export const fileserver = async (context: Context<Record<string, any>>) => {
     

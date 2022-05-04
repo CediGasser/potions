@@ -1,4 +1,4 @@
-import { Application } from "https://deno.land/x/oak@v6.4.0/mod.ts";
+import { Application } from "https://deno.land/x/oak@v10.5.1/mod.ts";
 import { apiRouter, usableSession } from "./backend/api.ts";
 import { fileserver } from "./backend/fileserver.ts";
 

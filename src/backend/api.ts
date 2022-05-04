@@ -1,5 +1,5 @@
-import { Router } from "https://deno.land/x/oak@v6.4.0/mod.ts";
-import { Session } from "https://deno.land/x/session@1.1.0/mod.ts";
+import { Router } from "https://deno.land/x/oak@v10.5.1/mod.ts";
+import { Session } from "https://deno.land/x/session@v1.0.0/mod.ts";
 import { Potion, Cart, CartItem } from "../common/types.ts";
 import { validate, required, isEmail, firstMessages, FirstMessages } from "https://deno.land/x/validasaur@v0.15.0/mod.ts";
 
