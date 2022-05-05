@@ -1,12 +1,12 @@
 import { Router } from "https://deno.land/x/oak@v10.5.1/mod.ts";
-import { Session } from "https://deno.land/x/session@v1.0.0/mod.ts";
+import { Session } from "https://deno.land/x/oak_sessions@v3.3.1/mod.ts";
 import { Potion, Cart, CartItem } from "../common/types.ts";
 import { validate, required, isEmail, firstMessages, FirstMessages } from "https://deno.land/x/validasaur@v0.15.0/mod.ts";
 
 // Session konfigurieren und starten
-const session = new Session({ framework: "oak" });
-await session.init();
-export const usableSession = session.use()(session);
+const session = new Session();
+
+export const usableSession = session.initMiddleware();
 
 async function loadPotions(): Promise<Potion[]> {
     const jsonFile = await Deno.readTextFile(`${Deno.cwd()}/src/backend/data/potions.json`);
@@ -75,15 +75,16 @@ router
     .post("/api/cart/:id", async context => {
         const itemId = Number(context.params.id);
         if (itemId != undefined && potions.findIndex(p  => p.id == itemId) >= 0) {
-            var cart = await context.state.session.get("cart");
+            let cart = await context.state.session.get("cart");
+            console.log(cart);
             if (cart == undefined) { 
                 cart = {
                     totalPrice: 0,
                     items: []
                 };
-                await context.state.session.set("cart", cart);
             }
             const index = cart.items.findIndex((item: CartItem) => item.id == itemId);
+            console.log(index, itemId)
             if (cart.items[index] == undefined) {
                 cart.items.push({ amount:1, id:itemId });
             } else {
