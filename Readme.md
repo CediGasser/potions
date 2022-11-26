@@ -51,7 +51,7 @@ Eine Herausforderung war, das HTML zu Modularisieren. Es soll nicht immer wieder
 
 ## Typen ##
 Diese Typen in `common/types.ts` werden vom front- und backend importiert.
-```js
+```ts
 export type Potion = {
     name: string,
     description: string,
